@@ -1,0 +1,34 @@
+﻿@model IEnumerable<MassDB.Models.District>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center" style="color:brown">DISTRICT INFORMATION</h2>
+
+<p>
+    @Html.ActionLink("Add New District", "Create")
+</p>
+<table class="table table-bordered" style="background-color:chartreuse">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DistrictName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DistrictName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DistrictId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.DistrictId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.DistrictId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,89 @@
+﻿@model MassDB.Models.Market
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Market</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MarketingOpeningDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MarketingOpeningDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MarketingCloseingDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MarketingCloseingDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Filter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Filter)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Boil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Boil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MarketingTk)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MarketingTk)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BigMarketingTk)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BigMarketingTk)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalTk)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalTk)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MassMamber.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MassMamber.Name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

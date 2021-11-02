@@ -1,0 +1,77 @@
+﻿@model IEnumerable<MassDB.Models.Market>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center" style="color:blueviolet">MASS MARKET INFORMATION</h2>
+
+<p>
+    @Html.ActionLink("Add New Marketing", "Create")
+</p>
+<table class="table table-bordered" style="background-color:darkgray">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MassMamber.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MarketingOpeningDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MarketingCloseingDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Filter)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Boil)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MarketingTk)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BigMarketingTk)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalTk)
+        </th>
+
+        <th>Actions..</th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.MassMamber.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.MarketingOpeningDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.MarketingCloseingDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Filter)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Boil)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.MarketingTk)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.BigMarketingTk)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TotalTk)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.MarketId }) |
+        @Html.ActionLink("Details", "Details", new { id = item.MarketId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.MarketId })
+    </td>
+</tr>
+}
+
+</table>

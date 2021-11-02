@@ -1,0 +1,51 @@
+﻿@model MassDB.Models.Clear
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center">Details Clear Information</h2>
+
+<div>
+    <h4>Clear</h4>
+    <hr />
+    <dl class="dl-horizontal" style="background-color:darkturquoise">
+        <dt>
+            @Html.DisplayNameFor(model => model.WashRoomClearingDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WashRoomClearingDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FilterClearingDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FilterClearingDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MassMamber.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MassMamber.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ClearId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,54 @@
+﻿@model IEnumerable<MassDB.Models.Clear>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center" style="background-color:chartreuse">CLEARING MASS INFORMATION</h2>
+
+<p>
+    @Html.ActionLink("Add New Clearing", "Create")
+</p>
+<table class="table table-bordered" style="background-color:crimson">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MassMamber.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WashRoomClearingDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FilterClearingDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Notes)
+        </th>
+
+        <th>Action..</th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.MassMamber.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.WashRoomClearingDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FilterClearingDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Notes)
+    </td>
+
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.ClearId }) |
+        @Html.ActionLink("Details", "Details", new { id = item.ClearId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.ClearId })
+    </td>
+</tr>
+}
+
+</table>

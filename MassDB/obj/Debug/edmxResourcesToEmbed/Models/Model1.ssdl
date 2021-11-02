@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MassDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Clear">
+    <Key>
+      <PropertyRef Name="ClearId" />
+    </Key>
+    <Property Name="ClearId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WashRoomClearingDate" Type="datetime" />
+    <Property Name="FilterClearingDate" Type="datetime" />
+    <Property Name="Notes" Type="nvarchar(max)" />
+    <Property Name="MassMemberId" Type="int" />
+  </EntityType>
+  <EntityType Name="Districts">
+    <Key>
+      <PropertyRef Name="DistrictId" />
+    </Key>
+    <Property Name="DistrictId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DistrictName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Market">
+    <Key>
+      <PropertyRef Name="MarketId" />
+    </Key>
+    <Property Name="MarketId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MarketingOpeningDate" Type="datetime" />
+    <Property Name="MarketingCloseingDate" Type="datetime" />
+    <Property Name="Filter" Type="bit" />
+    <Property Name="Boil" Type="bit" />
+    <Property Name="MarketingTk" Type="money" />
+    <Property Name="BigMarketingTk" Type="money" />
+    <Property Name="TotalTk" Type="money" />
+    <Property Name="MassMemberId" Type="int" />
+  </EntityType>
+  <EntityType Name="MassMamber">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="int" />
+    <Property Name="EmailAddress" Type="nvarchar(max)" />
+    <Property Name="Age" Type="int" />
+    <Property Name="JoinInDate" Type="datetime" />
+    <Property Name="DistrictId" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_Clear_MassMamber1">
+    <End Role="MassMamber" Type="Self.MassMamber" Multiplicity="0..1" />
+    <End Role="Clear" Type="Self.Clear" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MassMamber">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Clear">
+        <PropertyRef Name="MassMemberId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Market_MassMamber">
+    <End Role="MassMamber" Type="Self.MassMamber" Multiplicity="0..1" />
+    <End Role="Market" Type="Self.Market" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MassMamber">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Market">
+        <PropertyRef Name="MassMemberId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MassMamber_Districts">
+    <End Role="Districts" Type="Self.Districts" Multiplicity="0..1" />
+    <End Role="MassMamber" Type="Self.MassMamber" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Districts">
+        <PropertyRef Name="DistrictId" />
+      </Principal>
+      <Dependent Role="MassMamber">
+        <PropertyRef Name="DistrictId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MassDBModelStoreContainer">
+    <EntitySet Name="Clear" EntityType="Self.Clear" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Districts" EntityType="Self.Districts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Market" EntityType="Self.Market" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MassMamber" EntityType="Self.MassMamber" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Clear_MassMamber1" Association="Self.FK_Clear_MassMamber1">
+      <End Role="MassMamber" EntitySet="MassMamber" />
+      <End Role="Clear" EntitySet="Clear" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Market_MassMamber" Association="Self.FK_Market_MassMamber">
+      <End Role="MassMamber" EntitySet="MassMamber" />
+      <End Role="Market" EntitySet="Market" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MassMamber_Districts" Association="Self.FK_MassMamber_Districts">
+      <End Role="Districts" EntitySet="Districts" />
+      <End Role="MassMamber" EntitySet="MassMamber" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
